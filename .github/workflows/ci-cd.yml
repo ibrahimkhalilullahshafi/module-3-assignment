@@ -27,4 +27,35 @@ jobs:
         with:
           name: test-results
           path: coverage.txt
+  deploy:
+      needs: test
+      runs-on: self-hosted
 
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+
+        - name: Set up Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: '22'
+
+        - name: Install packages
+          run: npm install
+
+        - name: Download test results
+          uses: actions/download-artifact@v4
+          with:
+            name: test-results
+
+        - name: Display test results
+          run: cat report.txt
+
+        - name: Deploy application
+          run: |
+            ls -a
+            echo "Deploying application..."
+            pm2 stop app || true # stop if running
+            pm2 delete app || true # delete if exists
+            pm2 start "npm start" --name="node-app"
+            pm2 save #save the process list
