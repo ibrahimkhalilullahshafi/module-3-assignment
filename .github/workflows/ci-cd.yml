@@ -54,10 +54,10 @@ jobs:
       - name: Deploy application
         run: |
           echo "Deploying application..."
-          pm2 stop node-app
+          pm2 stop app
           if ($LASTEXITCODE -ne 0) { echo "pm2 stop failed, continuing"; }
-          pm2 delete node-app
+          pm2 delete app
           if ($LASTEXITCODE -ne 0) { echo "pm2 delete failed, continuing"; }
-          pm2 start "npm start" --name="node-app"
+          pm2 start app.js --name app
           pm2 save
         shell: powershell
