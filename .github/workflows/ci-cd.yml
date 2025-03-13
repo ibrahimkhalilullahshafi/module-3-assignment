@@ -54,7 +54,7 @@ jobs:
       - name: Deploy application
         run: |
           echo "Deploying application..."
-          pm2 stop app || true
-          pm2 delete app || true
-          pm2 start app.js --name app
+          pm2 stop App || true
+          pm2 delete App || true
+          pm2 start App.tsx --name app
           pm2 save
