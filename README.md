@@ -5,7 +5,7 @@
 - Node Version 22
 
 
-### 1. For Run This Applications
+### 1. For Run This Application
 ```bash
 # install packages
 npm install 
