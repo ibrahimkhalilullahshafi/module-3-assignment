@@ -16,7 +16,7 @@ jobs:
           node-version: '22'
 
       - name: Install packages
-        run: npm install
+        run: npm install npm@latest -g
 
       - name: Run tests with coverage
         run: npm run check -- --coverage > coverage.txt
