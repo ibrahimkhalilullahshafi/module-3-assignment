@@ -19,7 +19,7 @@ jobs:
         run: npm install npm@latest -g
 
       - name: Run tests with coverage
-        run: npm run check -- --coverage > coverage.txt
+        run: npm run -- --coverage > coverage.txt
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
