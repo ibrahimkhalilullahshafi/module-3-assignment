@@ -58,6 +58,6 @@ jobs:
           if ($LASTEXITCODE -ne 0) { echo "pm2 stop failed, continuing"; }
           pm2 delete app
           if ($LASTEXITCODE -ne 0) { echo "pm2 delete failed, continuing"; }
-          pm2 start "npm start" --name app
+          pm2 start "./src/server.js" --name node-app
           pm2 save
         shell: powershell
